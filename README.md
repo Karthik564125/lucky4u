@@ -1,75 +1,85 @@
-# React + TypeScript + Vite
+# Lucky 4U Holdings
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive corporate website built for Lucky 4U Holdings, a Dubai-based private investment group focused on high-growth opportunities across technology, agriculture, global trade, artificial intelligence, and frontier markets.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Lucky 4U Holdings operates across multiple sectors and regions, connecting capital with scalable businesses and long-term value creation opportunities. This website serves as the company's digital presence, showcasing its investment philosophy, portfolio interests, and global operations.
 
-## React Compiler
+## Features
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+* Modern corporate design
+* Fully responsive across desktop, tablet, and mobile devices
+* Professional investment-focused branding
+* Interactive navigation and smooth user experience
+* Portfolio showcase
+* Investment philosophy section
+* Global operations overview
+* Contact and partnership inquiry pages
+* Optimized performance with Vite
 
-Note: This will impact Vite dev & build performances.
+## Tech Stack
 
-## Expanding the ESLint configuration
+* React
+* TypeScript
+* Vite
+* React Router
+* Tailwind CSS
+* Lucide React Icons
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Pages
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* Home
+* About Us
+* Portfolio
+* Investment Philosophy
+* Contact
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/lucky4u.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Navigate into the project:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd lucky4u
 ```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview production build:
+
+```bash
+npm run preview
+```
+
+## Project Goals
+
+The objective of this project was to create a premium digital experience that reflects the professionalism, global outlook, and long-term investment vision of Lucky 4U Holdings while maintaining excellent performance and responsiveness across all devices.
+
+## Author
+
+Developed by Karthik
+
+B.Tech Computer Science & Engineering
+Frontend Developer | React Developer
