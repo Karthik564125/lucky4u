@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, Globe, Shield, Landmark, TrendingUp } from 'lucide-react'
-import Map from '../components/UI/Map'
+import { ArrowRight, Globe, Shield, Landmark, TrendingUp, Cpu, Layers } from 'lucide-react'
 
 const stats = [
   { id: 1, label: 'Headquarters', value: 'Dubai, UAE', icon: Globe },
@@ -133,58 +132,136 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. Geographic Presence Section (Deep Navy Theme) */}
+      {/* 3. Global Operations Section (Deep Navy Theme) */}
       <section className="py-24 bg-brand-navy-950 text-white border-b border-brand-navy-900">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-brand-gold-500 tracking-widest uppercase">
               Global Operations
             </span>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-white tracking-tight">
-              Geographic Presence
+            <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-white tracking-tight">
+              Building Strategic Presence Across Key Markets
             </h2>
             <div className="w-12 h-[2px] bg-brand-gold-500 mx-auto mt-4" />
-          </div>
-          
-          {/* Interactive World Map */}
-          <Map />
-
-          {/* Region Cards Grid (Option B Integrated with Option A Map) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 text-left">
-            <div className="bg-brand-navy-900 border border-brand-navy-800 p-6 rounded-none relative group hover:border-brand-gold-500/50 transition-colors">
-              <span className="absolute top-0 left-0 w-0 h-[2px] bg-brand-gold-500 transition-all duration-300 group-hover:w-full" />
-              <span className="text-[10px] uppercase tracking-wider text-brand-gold-500 font-semibold block mb-2 font-heading">Global Headquarters</span>
-              <h4 className="text-base font-heading font-bold text-white mb-2">Dubai, UAE</h4>
-              <p className="text-xs text-gray-400 font-light leading-relaxed">
-                Headquarters, investment platform, and central trading hub coordinating global operations.
-              </p>
-            </div>
-            <div className="bg-brand-navy-900 border border-brand-navy-800 p-6 rounded-none relative group hover:border-brand-gold-500/50 transition-colors">
-              <span className="absolute top-0 left-0 w-0 h-[2px] bg-brand-gold-500 transition-all duration-300 group-hover:w-full" />
-              <span className="text-[10px] uppercase tracking-wider text-brand-gold-500 font-semibold block mb-2 font-heading font-heading">South Asia Hub</span>
-              <h4 className="text-base font-heading font-bold text-white mb-2">India</h4>
-              <p className="text-xs text-gray-400 font-light leading-relaxed">
-                Primary focal market for FMCG brands, artificial intelligence, climate technology, and space exploration.
-              </p>
-            </div>
-            <div className="bg-brand-navy-900 border border-brand-navy-800 p-6 rounded-none relative group hover:border-brand-gold-500/50 transition-colors">
-              <span className="absolute top-0 left-0 w-0 h-[2px] bg-brand-gold-500 transition-all duration-300 group-hover:w-full" />
-              <span className="text-[10px] uppercase tracking-wider text-brand-gold-500 font-semibold block mb-2 font-heading font-heading">East Africa Operations</span>
-              <h4 className="text-base font-heading font-bold text-white mb-2">Kenya / East Africa</h4>
-              <p className="text-xs text-gray-400 font-light leading-relaxed">
-                Integrated agricultural platforms, agro-processing, logistics, regional distribution, and exports.
-              </p>
-            </div>
-            <div className="bg-brand-navy-900 border border-brand-navy-800 p-6 rounded-none relative group hover:border-brand-gold-500/50 transition-colors">
-              <span className="absolute top-0 left-0 w-0 h-[2px] bg-brand-gold-500 transition-all duration-300 group-hover:w-full" />
-              <span className="text-[10px] uppercase tracking-wider text-brand-gold-500 font-semibold block mb-2 font-heading font-heading">International Allocations</span>
-              <h4 className="text-base font-heading font-bold text-white mb-2">Global Markets</h4>
-              <p className="text-xs text-gray-400 font-light leading-relaxed">
-                Strategic co-investments, late-stage secondary market allocations, and international commodities trading.
-              </p>
-            </div>
+            <p className="text-sm text-gray-400 font-light max-w-xl mx-auto pt-2">
+              Our operating and investment footprint spans high-growth regions where capital, innovation, and trade intersect.
+            </p>
           </div>
 
+          {/* 4-Card Responsive Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+            {/* Card 1 */}
+            <div className="bg-brand-navy-900 border border-brand-navy-800 p-8 rounded-none relative group hover:border-brand-gold-500/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <span className="absolute top-0 left-0 w-0 h-[2px] bg-brand-gold-500 transition-all duration-300 group-hover:w-full" />
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="p-2.5 bg-brand-navy-950 border border-brand-navy-800 text-brand-gold-500 rounded-sm">
+                  <Landmark className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-[9px] uppercase tracking-wider text-brand-gold-500 font-semibold font-heading">Corporate Headquarters</h4>
+                  <h3 className="text-base md:text-lg font-heading font-bold text-white mt-0.5">Dubai, UAE</h3>
+                </div>
+              </div>
+              <ul className="space-y-3 text-xs text-gray-300 font-light">
+                <li className="flex items-start">
+                  <span className="text-brand-gold-500 mr-2">•</span>
+                  Global capital allocation
+                </li>
+                <li className="flex items-start">
+                  <span className="text-brand-gold-500 mr-2">•</span>
+                  Trade facilitation hub
+                </li>
+                <li className="flex items-start">
+                  <span className="text-brand-gold-500 mr-2">•</span>
+                  Strategic investment platform
+                </li>
+              </ul>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-brand-navy-900 border border-brand-navy-800 p-8 rounded-none relative group hover:border-brand-gold-500/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <span className="absolute top-0 left-0 w-0 h-[2px] bg-brand-gold-500 transition-all duration-300 group-hover:w-full" />
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="p-2.5 bg-brand-navy-950 border border-brand-navy-800 text-brand-gold-500 rounded-sm">
+                  <Cpu className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-[9px] uppercase tracking-wider text-brand-gold-500 font-semibold font-heading">Innovation & Technology</h4>
+                  <h3 className="text-base md:text-lg font-heading font-bold text-white mt-0.5">India</h3>
+                </div>
+              </div>
+              <ul className="space-y-3 text-xs text-gray-300 font-light">
+                <li className="flex items-start">
+                  <span className="text-brand-gold-500 mr-2">•</span>
+                  Artificial intelligence
+                </li>
+                <li className="flex items-start">
+                  <span className="text-brand-gold-500 mr-2">•</span>
+                  Consumer brands
+                </li>
+                <li className="flex items-start">
+                  <span className="text-brand-gold-500 mr-2">•</span>
+                  Frontier technology investments
+                </li>
+              </ul>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-brand-navy-900 border border-brand-navy-800 p-8 rounded-none relative group hover:border-brand-gold-500/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <span className="absolute top-0 left-0 w-0 h-[2px] bg-brand-gold-500 transition-all duration-300 group-hover:w-full" />
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="p-2.5 bg-brand-navy-950 border border-brand-navy-800 text-brand-gold-500 rounded-sm">
+                  <Layers className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-[9px] uppercase tracking-wider text-brand-gold-500 font-semibold font-heading">Agriculture & Logistics</h4>
+                  <h3 className="text-base md:text-lg font-heading font-bold text-white mt-0.5">Kenya / East Africa</h3>
+                </div>
+              </div>
+              <ul className="space-y-3 text-xs text-gray-300 font-light">
+                <li className="flex items-start">
+                  <span className="text-brand-gold-500 mr-2">•</span>
+                  Agricultural processing
+                </li>
+                <li className="flex items-start">
+                  <span className="text-brand-gold-500 mr-2">•</span>
+                  Distribution networks
+                </li>
+                <li className="flex items-start">
+                  <span className="text-brand-gold-500 mr-2">•</span>
+                  Export infrastructure
+                </li>
+              </ul>
+            </div>
+
+            {/* Card 4 */}
+            <div className="bg-brand-navy-900 border border-brand-navy-800 p-8 rounded-none relative group hover:border-brand-gold-500/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <span className="absolute top-0 left-0 w-0 h-[2px] bg-brand-gold-500 transition-all duration-300 group-hover:w-full" />
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="p-2.5 bg-brand-navy-950 border border-brand-navy-800 text-brand-gold-500 rounded-sm">
+                  <Globe className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-[9px] uppercase tracking-wider text-brand-gold-500 font-semibold font-heading">Partnerships & Capital</h4>
+                  <h3 className="text-base md:text-lg font-heading font-bold text-white mt-0.5">Global Markets</h3>
+                </div>
+              </div>
+              <ul className="space-y-3 text-xs text-gray-300 font-light">
+                <li className="flex items-start">
+                  <span className="text-brand-gold-500 mr-2">•</span>
+                  Venture investments
+                </li>
+                <li className="flex items-start">
+                  <span className="text-brand-gold-500 mr-2">•</span>
+                  Secondary markets
+                </li>
+                <li className="flex items-start">
+                  <span className="text-brand-gold-500 mr-2">•</span>
+                  International trade relationships
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -194,8 +271,8 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
             
             {/* Left Column: Prestigious Quote & Title */}
-            <div className="lg:col-span-5 space-y-6">
-              <div className="relative p-8 border border-brand-gold-500/30 bg-brand-gold-50/20 rounded-sm">
+            <div className="lg:col-span-5 flex justify-center">
+              <div className="relative p-8 border border-brand-gold-500/30 bg-brand-gold-50/20 rounded-sm w-full">
                 <div className="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-brand-gold-500/40 pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-brand-gold-500/40 pointer-events-none" />
                 
