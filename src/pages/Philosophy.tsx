@@ -106,7 +106,6 @@ export default function Philosophy() {
                   title={pillar.title}
                   subtitle={pillar.short}
                   description={pillar.description}
-                  label={`Pillar ${pillar.number}`}
                   icon={<IconComp className="w-5 h-5 text-brand-gold-600" />}
                 />
               )
