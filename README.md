@@ -8,45 +8,40 @@ Lucky 4U Holdings operates across multiple sectors and regions, connecting capit
 
 ## Features
 
-* Modern corporate design
-* Fully responsive across desktop, tablet, and mobile devices
-<<<<<<< HEAD
-* Professional investment-focused branding
-=======
-* Professional investment-focused brandings
->>>>>>> 2942f86 (some changes made in aboutus home and portfolio pages)
-* Interactive navigation and smooth user experience
-* Portfolio showcase
-* Investment philosophy section
-* Global operations overview
-* Contact and partnership inquiry pages
-* Optimized performance with Vite
+- Modern corporate design
+- Fully responsive across desktop, tablet, and mobile devices
+- Professional investment-focused branding
+- Interactive navigation and smooth user experience
+- Portfolio showcase
+- Investment philosophy section
+- Global operations overview
+- Contact and partnership inquiry pages
+- Optimized performance with Vite
 
 ## Tech Stack
 
-* React
-* TypeScript
-* Vite
-* React Router
-* Tailwind CSS
-* Lucide React Icons
+- React
+- TypeScript
+- Vite
+- React Router
+- Tailwind CSS
+- Lucide React
+- ESLint
 
 ## Pages
 
-* Home
-* About Us
-* Portfolio
-* Investment Philosophy
-* Contact
-<<<<<<< HEAD
-=======
+- Home
+- About Us
+- Portfolio
+- Investment Philosophy
+- Contact
 
 ## Installation
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/lucky4u.git
+git clone https://github.com/Karthik564125/lucky4u.git
 ```
 
 Navigate into the project:
@@ -73,20 +68,31 @@ Build for production:
 npm run build
 ```
 
-Preview production build:
+Preview the production build:
 
 ```bash
 npm run preview
 ```
 
+## Live Demo
+
+Website:
+
+https://lucky4u.vercel.app/
+
+GitHub Repository:
+
+https://github.com/Karthik564125/lucky4u
+
 ## Project Goals
 
-The objective of this project was to create a premium digital experience that reflects the professionalism, global outlook, and long-term investment vision of Lucky 4U Holdings while maintaining excellent performance and responsiveness across all devices.
+The objective of this project was to create a premium digital experience that reflects the professionalism, global outlook, and long-term investment vision of Lucky 4U Holdings while maintaining excellent performance, accessibility, and responsiveness across all devices.
 
 ## Author
 
-Developed by Karthik
+**Karthikeya Bharadwaja Pisupati**
 
-B.Tech Computer Science & Engineering
+B.Tech Computer Science & Engineering  
 Frontend Developer | React Developer
->>>>>>> 2942f86 (some changes made in aboutus home and portfolio pages)
+
+GitHub: https://github.com/Karthik564125
