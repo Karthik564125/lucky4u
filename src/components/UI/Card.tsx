@@ -62,13 +62,19 @@ export default function Card({
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-1">
             <h3 className="text-xl font-heading font-semibold text-brand-navy-950 group-hover:text-brand-gold-700 transition-colors leading-tight">
-              {title}
+              {sector ?? title}
             </h3>
 
-            {subtitle && (
+            {sector ? (
               <p className="text-xs font-medium uppercase tracking-wider text-brand-navy-500">
-                {subtitle}
+                {title}
               </p>
+            ) : (
+              subtitle && (
+                <p className="text-xs font-medium uppercase tracking-wider text-brand-navy-500">
+                  {subtitle}
+                </p>
+              )
             )}
           </div>
 
@@ -87,16 +93,7 @@ export default function Card({
         {/* Metadata */}
         {(sector || geography || investmentType || categoryText) && (
           <div className="grid grid-cols-2 gap-4 pt-6 border-t border-gray-100">
-            {sector && (
-              <div>
-                <span className="block text-[9px] uppercase tracking-wider text-gray-400 font-semibold">
-                  Sector
-                </span>
-                <span className="block mt-1 text-xs font-semibold text-brand-navy-950">
-                  {sector}
-                </span>
-              </div>
-            )}
+            {/* Sector moved to card header; removed from metadata grid */}
 
             {geography && (
               <div>
