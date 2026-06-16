@@ -5,22 +5,22 @@ import Card from '../components/UI/Card'
 const highlights = [
   {
     title: 'Headquartered in Dubai',
-    description: 'Operating out of Dubai, UAE, the premier gateway connecting Middle East, India, Africa, and global financial markets.',
+    description: 'A global commercial hub connecting Asia, Africa, Europe, and the Middle East.',
     icon: Landmark,
   },
   {
     title: 'Founder-Led Investment Approach',
-    description: 'We prioritize strong partnership alignment with founders who possess operational excellence and sector expertise.',
+    description: 'We back ambitious entrepreneurs and support them beyond capital.',
     icon: Users,
   },
   {
     title: 'Operating + Investment Mindset',
-    description: 'Beyond providing growth equity, we build, incubate, and operate direct trading and agricultural platforms.',
+    description: 'We do not only invest; we help build, expand, commercialize, and connect companies.',
     icon: Briefcase,
   },
   {
     title: 'Long-Term Capital',
-    description: 'Family-backed resources allow us to maintain patient horizon cycles, prioritizing compounding value over exit urgency.',
+    description: 'We focus on compounding value over years, not short-term speculation.',
     icon: TrendingUp,
   },
 ]
@@ -55,9 +55,7 @@ export default function About() {
         <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold-500/5 blur-[120px] rounded-full pointer-events-none" />
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-4">
-            <span className="text-xs font-semibold text-brand-gold-500 tracking-widest uppercase">
-              Corporate Profile
-            </span>
+            
             <h1 className="text-3xl md:text-5xl font-heading font-extrabold tracking-tight text-white m-0">
               A Global Investment Platform from Dubai
             </h1>
@@ -89,7 +87,7 @@ export default function About() {
                 Lucky 4U Holdings represents a multi-generational legacy of trading and investing, formalized into an institutional platform. From our primary offices in Dubai, we identify and fund enterprises solving high-barrier problems in critical sectors.
               </p>
               <p>
-                We invest in and build companies that sit at the intersection of innovation, sustainability, scale, and long-term value creation. Our interests span emerging consumer brands, food and agriculture, climate-positive technologies, artificial intelligence, space exploration, venture funds, secondary private markets, and international trading.
+                We invest and build companies that sit at the intersection of innovation, sustainability, scale, and long-term value creation. Our interests span emerging consumer brands, food and agriculture, climate-positive technologies, artificial intelligence, space exploration, venture funds, secondary private markets, and international trading.
               </p>
               <p>
                 We work with founders, operators, and strategic partners who are solving real-world problems and creating businesses that can scale across markets.
@@ -158,7 +156,7 @@ export default function About() {
                   key={index}
                   title={item.title}
                   description={item.description}
-                  label={`Pillar 0${index + 1}`}
+                  
                   icon={<IconComp className="w-6 h-6 text-brand-gold-600" />}
                 />
               )

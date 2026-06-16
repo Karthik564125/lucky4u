@@ -10,7 +10,11 @@ Lucky 4U Holdings operates across multiple sectors and regions, connecting capit
 
 * Modern corporate design
 * Fully responsive across desktop, tablet, and mobile devices
+<<<<<<< HEAD
 * Professional investment-focused branding
+=======
+* Professional investment-focused brandings
+>>>>>>> 2942f86 (some changes made in aboutus home and portfolio pages)
 * Interactive navigation and smooth user experience
 * Portfolio showcase
 * Investment philosophy section
@@ -34,3 +38,55 @@ Lucky 4U Holdings operates across multiple sectors and regions, connecting capit
 * Portfolio
 * Investment Philosophy
 * Contact
+<<<<<<< HEAD
+=======
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/lucky4u.git
+```
+
+Navigate into the project:
+
+```bash
+cd lucky4u
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview production build:
+
+```bash
+npm run preview
+```
+
+## Project Goals
+
+The objective of this project was to create a premium digital experience that reflects the professionalism, global outlook, and long-term investment vision of Lucky 4U Holdings while maintaining excellent performance and responsiveness across all devices.
+
+## Author
+
+Developed by Karthik
+
+B.Tech Computer Science & Engineering
+Frontend Developer | React Developer
+>>>>>>> 2942f86 (some changes made in aboutus home and portfolio pages)

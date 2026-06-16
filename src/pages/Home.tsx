@@ -26,12 +26,9 @@ export default function Home() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center space-x-2 border border-brand-gold-500/30 px-3 py-1 mb-8 bg-brand-navy-900"
             >
-              <span className="w-1.5 h-1.5 bg-brand-gold-500 rounded-full animate-pulse" />
-              <span className="text-[10px] md:text-xs font-semibold tracking-widest uppercase text-brand-gold-500">
-                Dubai-Based Private Investment Platform
-              </span>
+              
+              
             </motion.div>
 
             {/* Headline */}
@@ -41,8 +38,8 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight text-white leading-tight md:leading-none"
             >
-              From Dubai to the World:<br />
-              <span className="text-brand-gold-500">Investing in Scalable, Future-Ready Companies.</span>
+              
+              <span className="text-brand-gold-500">Investing in Tomorrow’s Industries. Building Businesses with Purpose.</span>
             </motion.h1>
 
             {/* Subheadline */}
@@ -52,7 +49,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="mt-8 text-base md:text-lg lg:text-xl text-gray-300 font-light leading-relaxed max-w-3xl"
             >
-              Lucky 4U Holdings is a Dubai-based investment and operating group with interests across food, agriculture, climate technology, artificial intelligence, space exploration, venture funds, private markets, and international trade.
+              Lucky 4U Holdings is a Dubai-based investment and business group backing high-growth companies across food, agriculture, climate technology, space exploration, AI, consumer brands, and global trade.
             </motion.p>
 
             {/* Buttons */}
@@ -66,7 +63,7 @@ export default function Home() {
                 to="/portfolio"
                 className="inline-flex items-center justify-center px-6 py-3.5 bg-brand-gold-500 hover:bg-brand-gold-600 text-brand-navy-950 font-semibold text-xs tracking-wider uppercase transition-colors rounded-sm shadow-sm"
               >
-                Explore Portfolio
+                Explore Our Portfolio
               </Link>
               <Link
                 to="/contact"
@@ -158,7 +155,7 @@ export default function Home() {
                   <Landmark className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-[9px] uppercase tracking-wider text-brand-gold-500 font-semibold font-heading">Corporate Headquarters</h4>
+                  <h4 className="text-[9px] uppercase tracking-wider text-brand-gold-500 font-semibold font-heading">Headquarters</h4>
                   <h3 className="text-base md:text-lg font-heading font-bold text-white mt-0.5">Dubai, UAE</h3>
                 </div>
               </div>
@@ -297,9 +294,7 @@ export default function Home() {
             {/* Right Column: Detailed Letter Copy */}
             <div className="lg:col-span-7 space-y-8 text-left">
               <div className="space-y-3">
-                <span className="text-xs font-semibold text-brand-gold-700 tracking-widest uppercase block">
-                  Corporate Leadership
-                </span>
+                
                 <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-brand-navy-950 tracking-tight">
                   Chairman's Message
                 </h2>

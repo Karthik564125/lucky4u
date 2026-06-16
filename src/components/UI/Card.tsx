@@ -51,13 +51,9 @@ export default function Card({
       <span className="absolute top-0 left-0 w-0 h-[3px] bg-brand-gold-500 transition-all duration-300 group-hover:w-full" />
 
       <div className="space-y-6">
-        {/* Top Metadata labels */}
+        {/* Top metadata: only show badge here; label removed per design change */}
         <div className="flex items-center justify-between">
-          {label && (
-            <span className="text-[10px] tracking-widest text-brand-gold-700 font-heading font-semibold uppercase">
-              {label}
-            </span>
-          )}
+          <div />
           {badge && (
             <span className="inline-flex items-center px-2.5 py-0.5 rounded-none text-[10px] font-heading font-semibold bg-brand-navy-950 text-brand-gold-500 border border-brand-gold-500/20 tracking-wider">
               {badge}
@@ -69,12 +65,18 @@ export default function Card({
         <div className="flex items-start justify-between space-x-4">
           <div className="space-y-1">
             <h3 className="text-xl font-heading font-bold text-brand-navy-950 group-hover:text-brand-gold-700 transition-colors leading-tight">
-              {title}
+              {sector ?? title}
             </h3>
-            {subtitle && (
+            {sector ? (
               <p className="text-xs font-sans text-brand-navy-500 font-medium tracking-wide uppercase">
-                {subtitle}
+                {title}
               </p>
+            ) : (
+              subtitle && (
+                <p className="text-xs font-sans text-brand-navy-500 font-medium tracking-wide uppercase">
+                  {subtitle}
+                </p>
+              )
             )}
           </div>
           {icon && (
@@ -92,12 +94,7 @@ export default function Card({
         {/* Institutional 2x2 Metadata Grid */}
         {(sector || geography || investmentType || categoryText) && (
           <div className="grid grid-cols-2 gap-x-4 gap-y-4 pt-6 border-t border-gray-100 text-left">
-            {sector && (
-              <div>
-                <span className="block text-[9px] uppercase tracking-wider text-gray-400 font-semibold font-heading">Sector</span>
-                <span className="text-xs text-brand-navy-950 font-semibold mt-0.5 block">{sector}</span>
-              </div>
-            )}
+            {/* Sector moved to card heading; removed from metadata */}
             {geography && (
               <div>
                 <span className="block text-[9px] uppercase tracking-wider text-gray-400 font-semibold font-heading">Geography</span>

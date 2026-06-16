@@ -236,7 +236,7 @@ export default function Portfolio() {
                 Active Equity Allocations
               </span>
               <h2 className="text-2xl md:text-3xl font-heading font-bold text-brand-navy-950 tracking-tight">
-                Direct Investments
+                Portfolio Companies:
               </h2>
               <div className="w-16 h-[2px] bg-brand-gold-500" />
             </div>
