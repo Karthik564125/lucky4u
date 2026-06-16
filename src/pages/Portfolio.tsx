@@ -259,7 +259,7 @@ export default function Portfolio() {
                       geography={item.geography}
                       investmentType={item.investmentType}
                       categoryText={item.categoryText}
-                      label="Direct Investment"
+                      
                     />
                   </motion.div>
                 ))}
@@ -326,7 +326,7 @@ export default function Portfolio() {
                       geography={item.geography}
                       investmentType={item.investmentType}
                       categoryText={item.categoryText}
-                      label="Operating Platform"
+                      
                       highlight={true}
                     />
                   </motion.div>
@@ -408,7 +408,7 @@ export default function Portfolio() {
                   geography={item.geography}
                   investmentType={item.investmentType}
                   categoryText={item.categoryText}
-                  label="Fund & Secondary"
+                  
                 />
               ))}
             </div>

@@ -51,32 +51,55 @@ export default function Card({
       <span className="absolute top-0 left-0 w-0 h-[3px] bg-brand-gold-500 transition-all duration-300 group-hover:w-full" />
 
       <div className="space-y-6">
-        {/* Top metadata: only show badge here; label removed per design change */}
+        {/* Top Metadata labels */}
         <div className="flex items-center justify-between">
-          <div />
-          {badge && (
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-none text-[10px] font-heading font-semibold bg-brand-navy-950 text-brand-gold-500 border border-brand-gold-500/20 tracking-wider">
-              {badge}
+          {label && (
+            <span className="text-[10px] tracking-widest text-brand-gold-700 font-heading font-semibold uppercase">
+              {label}
             </span>
           )}
-        </div>
-
-        {/* Card Header */}
-        <div className="flex items-start justify-between space-x-4">
-          <div className="space-y-1">
-            <h3 className="text-xl font-heading font-bold text-brand-navy-950 group-hover:text-brand-gold-700 transition-colors leading-tight">
-              {sector ?? title}
+          {badge && (
+            <s          {label && (
+            <span className="text-[10px] tracking-widest text-brand-gold-700 font-heading font-semibold uppercase">
+              {label}
+            </span>
+          )}
+ne-flex items-center px-2.5             <s          {label && (
+            <span className="text-[10px] tracking-widest text-brand-gold-700 font-heading font-semibold uppercase">
+              {label}
+            </span>
+          )}
+net-heading font-semibold bg-bran            <s          {label && (
+            <span className="d-gold-500  tracking-widest text-brand-gold-700border border-brand-gold-500uppercase">
+              {label}
+            </span>
+          )}
+net-heading font-semibold bg0 tracbran            <s          {label && (
+            <span className="d-gold-500  tracking-widest             {bad700            </span>
+     500uppercase">
+              {label}
+            </span>
+          )}
+net-heading font-semibold bg0}
+   tracbran            <s          {label && (
+            <span className="d-gold-500  tracking-widest             {bad700            </span>
+     500uppercase">
+   {/* Card Healabel/}
+        <div className="flex items-stnet-heading font-semibold bg0}
+   tracbran    art justis          {label && (ee            <span className="d-gold-500  tracking-widest             {bad700            </span>
+     500uppercase">
+ce-x-4">
+   Healabeldiv className="space-y-1">
+            <h3stnet-heading font-semibold bg0}
+   tracbran    art justis          {label && (ee            <span className="d-gold-500  tracking-widest             {bad700            </span>
+     500uppercase">
+ceading font-Healabeldivrand-navy-950 group-hover:text-brand-gold-700 transition-colors leading-tight">
+              {title}
             </h3>
-            {sector ? (
-              <p className="text-xs font-sans text-brand-navy-500 font-medium tracking-wide uppercase">
-                {title}
+            {subtitle && (
+              <p className="text-xs font-sans text-brand-navy-500 font-medium tracking-subtitle &&ercase">
+                {subtitle}
               </p>
-            ) : (
-              subtitle && (
-                <p className="text-xs font-sans text-brand-navy-500 font-medium tracking-wide uppercase">
-                  {subtitle}
-                </p>
-              )
             )}
           </div>
           {icon && (
@@ -94,7 +117,12 @@ export default function Card({
         {/* Institutional 2x2 Metadata Grid */}
         {(sector || geography || investmentType || categoryText) && (
           <div className="grid grid-cols-2 gap-x-4 gap-y-4 pt-6 border-t border-gray-100 text-left">
-            {/* Sector moved to card heading; removed from metadata */}
+            {sector && (
+              <div>
+                <span className="block text-[9px] uppercase tracking-wider text-gray-400 font-semibold font-heading">Sector</span>
+                <span className="text-xs text-brand-navy-950 font-semibold mt-0.5 block">{sector}</span>
+              </div>
+            )}
             {geography && (
               <div>
                 <span className="block text-[9px] uppercase tracking-wider text-gray-400 font-semibold font-heading">Geography</span>
