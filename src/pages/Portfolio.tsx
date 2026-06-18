@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Shield, Cpu, TrendingUp, Layers } from 'lucide-react'
-import Card from '../components/UI/Card'
+import { useSearchParams, Link } from 'react-router-dom'
+import { MapPin } from 'lucide-react'
+import GlassCard from '../components/UI/GlassCard'
+import { BentoGrid, BentoItem } from '../components/UI/BentoGrid'
 
 interface PortfolioItem {
   id: string
@@ -15,57 +15,106 @@ interface PortfolioItem {
   category: 'consumer-food' | 'frontier-technology' | 'climate-sustainability' | 'agriculture-trade' | 'funds-secondary'
   isDirect: boolean
   isOperating: boolean
+  isFeatured: boolean // Bento layout flag
+  metrics?: { label: string; value: string }[]
 }
 
 const portfolioItems: PortfolioItem[] = [
-  // Direct Investments
+  // Operating platforms - Bento style double grid
   {
-    id: 'mitra-foods',
-    name: 'Mitra Foods',
-    sector: 'Food & FMCG',
-    geography: 'India',
-    investmentType: 'Direct Equity (Listed Exit)',
-    categoryText: 'Consumer & Food',
-    description: "Mitra Foods represents Lucky 4U Holdings’ early interest in India’s fast-growing packaged food and FMCG sector. The company later became part of a listed Indian company, reflecting the group's focus on scalable businesses with strategic growth potential.",
-    category: 'consumer-food',
+    id: 'lucky-avocado',
+    name: 'Lucky 4U Avocado Limited',
+    sector: 'Agro-Processing & Export',
+    geography: 'Kenya / East Africa',
+    investmentType: '100% Operating Subsidiary',
+    categoryText: 'Agriculture & Trade',
+    description: 'A vertically integrated agri-processing and packaging platform. We secure end-to-end logistics from local smallholder growers to international GCC market networks, optimizing post-harvest cold storage.',
+    category: 'agriculture-trade',
     isDirect: true,
-    isOperating: false,
+    isOperating: true,
+    isFeatured: true,
+    metrics: [
+      { label: 'Growers Assisted', value: '4,500+' },
+      { label: 'Income Uplift', value: '+34%' },
+      { label: 'Export Cap', value: '250 Tons/Yr' }
+    ]
+  },
+  {
+    id: 'lucky-traders',
+    name: 'Lucky 4U Traders FZCO',
+    sector: 'International Trade & Clearing',
+    geography: 'Dubai, UAE',
+    investmentType: '100% Operating Subsidiary',
+    categoryText: 'Agriculture & Trade',
+    description: 'The commercial clearing and trade backbone of L4U. Located in Dubai, this engine orchestrates custom border filings, wholesale networks, credit line configurations, and route-to-market scaling.',
+    category: 'agriculture-trade',
+    isDirect: true,
+    isOperating: true,
+    isFeatured: true,
+    metrics: [
+      { label: 'Custom Clearances', value: 'Zero-Friction' },
+      { label: 'Corridors Managed', value: 'GCC & Africa' }
+    ]
   },
   {
     id: 'omspace-rocket',
     name: 'Omspace Rocket',
-    sector: 'Space Exploration',
+    sector: 'Space & Aerospace Systems',
     geography: 'India / Global',
-    investmentType: 'Venture Capital',
-    categoryText: 'Frontier Tech',
-    description: 'Omspace Rocket operates within the space exploration and rocket technology sector. Lucky 4U Holdings supports frontier innovation and the future of aerospace development.',
+    investmentType: 'Venture Capital Stake',
+    categoryText: 'frontier-technology',
+    description: 'Advancing indigenous sub-orbital rocket capabilities, payload integration modules, and micro-satellite launchers to reduce launch cost structures for global communication providers.',
     category: 'frontier-technology',
     isDirect: true,
     isOperating: false,
+    isFeatured: true,
+    metrics: [
+      { label: 'Patents Pending', value: '3 Filings' },
+      { label: 'Engineering Jobs', value: '80+ Experts' }
+    ]
   },
+  // Direct Investments - Standard Grid
   {
     id: 'sow-and-reap',
     name: 'Sow and Reap Pvt Ltd',
-    sector: 'Biochar / Carbon Removal',
+    sector: 'Biochar & Carbon Removal',
     geography: 'Emerging Markets',
     investmentType: 'Sustainable Equity',
     categoryText: 'Climate & ESG',
-    description: 'Sow and Reap focuses on climate-positive technologies including biochar and carbon removal solutions. The company aligns with sustainability, circular economy principles, and carbon-linked value creation.',
+    description: 'Reforming crop residual burning by converting agricultural waste to biochar, restoring soil health, and yielding verifiable carbon removal credits for compliance markets.',
     category: 'climate-sustainability',
     isDirect: true,
     isOperating: false,
+    isFeatured: false,
+    metrics: [
+      { label: 'Carbon Removed', value: '1,200 Tons' }
+    ]
   },
   {
-    id: 'skippi',
-    name: 'Skippi',
-    sector: 'Consumer Brand / FMCG',
+    id: 'mitra-foods',
+    name: 'Mitra Foods',
+    sector: 'Food & FMCG Manufacturing',
     geography: 'India',
-    investmentType: 'Growth Capital',
+    investmentType: 'Direct Equity (Listed Exit)',
     categoryText: 'Consumer & Food',
-    description: 'Skippi is a fast-growing consumer brand with strong market recognition and expansion potential. The investment reflects Lucky 4U Holdings’ interest in scalable consumer businesses.',
+    description: 'Packaging and scaling localized food products, demonstrating pathways to efficiency in manufacturing-to-shelf distribution models.',
     category: 'consumer-food',
     isDirect: true,
     isOperating: false,
+    isFeatured: false,
+  },
+  {
+    id: 'skippi',
+    name: 'Skippi Ice Pops',
+    sector: 'Consumer FMCG Brand',
+    geography: 'India / Global',
+    investmentType: 'Growth Equity',
+    categoryText: 'Consumer & Food',
+    description: 'Converting regional product innovations into multi-channel consumer retail scale, driving factory employment and local supply procurement.',
+    category: 'consumer-food',
+    isDirect: true,
+    isOperating: false,
+    isFeatured: false,
   },
   {
     id: 'tracker-suite',
@@ -74,92 +123,73 @@ const portfolioItems: PortfolioItem[] = [
     geography: 'Global',
     investmentType: 'Venture Equity',
     categoryText: 'Frontier Tech',
-    description: 'Tracker Suite AI represents the group’s conviction in artificial intelligence and enterprise automation. The company focuses on improving business productivity through intelligent technology solutions.',
+    description: 'Orchestrating workflow intelligence and predictive cargo trackers to optimize commercial operating pipeline efficiencies.',
     category: 'frontier-technology',
     isDirect: true,
     isOperating: false,
-  },
-  {
-    id: 'lucky-avocado',
-    name: 'Lucky 4U Avocado Limited',
-    sector: 'Agro-Processing & Export',
-    geography: 'Kenya',
-    investmentType: 'Operating Subsidiary',
-    categoryText: 'Agriculture & Trade',
-    description: 'Lucky 4U Avocado Limited is an integrated agriculture venture focused on avocado procurement, export, processing, and farmer integration across Kenya.',
-    category: 'agriculture-trade',
-    isDirect: true,
-    isOperating: true,
-  },
-  {
-    id: 'lucky-traders',
-    name: 'Lucky 4U Traders FZCO',
-    sector: 'International Trade',
-    geography: 'Dubai, UAE',
-    investmentType: 'Operating Subsidiary',
-    categoryText: 'Agriculture & Trade',
-    description: "Lucky 4U Traders FZCO serves as the group's trading arm supporting import-export operations, distribution networks, and cross-border commerce.",
-    category: 'agriculture-trade',
-    isDirect: true,
-    isOperating: true,
+    isFeatured: false,
   },
   {
     id: 'smartbridge',
     name: 'Smartbridge Distribution',
-    sector: 'Logistics & Distribution',
+    sector: 'Agribusiness Logistics',
     geography: 'Kenya / East Africa',
-    investmentType: 'Operating Subsidiary',
+    investmentType: 'Joint Venture Asset',
     categoryText: 'Agriculture & Trade',
-    description: 'Smartbridge Distribution supports market access, logistics, and regional supply chain development across East Africa.',
+    description: 'Solving last-mile delivery blockages in agricultural distribution, bridging regional grower grids to export shipping lanes.',
     category: 'agriculture-trade',
     isDirect: true,
     isOperating: true,
+    isFeatured: false,
   },
-  // Fund & Secondary Investments
+  // Fund allocations
   {
     id: 'cornerstone-ventures',
     name: 'Cornerstone Ventures Fund',
-    sector: 'Tech-Led Growth',
+    sector: 'Tech-Led Growth Ventures',
     geography: 'India / Global',
-    investmentType: 'Venture Fund Allocation',
+    investmentType: 'Fund Allocation',
     categoryText: 'Private Markets',
-    description: 'Exposure to professionally managed venture and growth-stage opportunities across technology-led businesses.',
+    description: 'Allocations inside managed pools targeting high-growth software and digital transformation platforms across emerging corridors.',
     category: 'funds-secondary',
     isDirect: false,
     isOperating: false,
+    isFeatured: false,
   },
   {
     id: '1mx-ai-fund',
     name: '1MX AI Fund',
-    sector: 'Artificial Intelligence',
+    sector: 'Artificial Intelligence Pools',
     geography: 'Global',
-    investmentType: 'Venture Fund Allocation',
+    investmentType: 'Fund Allocation',
     categoryText: 'Private Markets',
-    description: 'An investment reflecting conviction in artificial intelligence as one of the most significant long-term growth opportunities.',
+    description: 'Dedicated fund participation mapping foundational artificial intelligence and workflow automation developments.',
     category: 'funds-secondary',
     isDirect: false,
     isOperating: false,
+    isFeatured: false,
   },
   {
     id: 'non-public',
     name: 'Non Public Pty Ltd',
-    sector: 'Pre-IPO Secondary',
+    sector: 'Pre-IPO Secondary Placements',
     geography: 'Global',
-    investmentType: 'Secondary Placement',
+    investmentType: 'Secondary Placements',
     categoryText: 'Private Markets',
-    description: 'Provides exposure to select private companies before public listing or major liquidity events.',
+    description: 'Tactical secondary visibility in mature private technology leaders ahead of liquidity events.',
     category: 'funds-secondary',
     isDirect: false,
     isOperating: false,
-  },
+    isFeatured: false,
+  }
 ]
 
 const categories = [
   { id: 'all', name: 'All Portfolios' },
-  { id: 'consumer-food', name: 'Consumer & Food' },
-  { id: 'frontier-technology', name: 'Frontier Tech' },
+  { id: 'agriculture-trade', name: 'Agribusiness & Trade' },
+  { id: 'frontier-technology', name: 'Frontier Tech & AI' },
   { id: 'climate-sustainability', name: 'Climate & ESG' },
-  { id: 'agriculture-trade', name: 'Agriculture & Trade' },
+  { id: 'consumer-food', name: 'Consumer & FMCG' },
   { id: 'funds-secondary', name: 'Funds & Secondaries' },
 ]
 
@@ -168,7 +198,6 @@ export default function Portfolio() {
   const filterParam = searchParams.get('filter') || 'all'
   const [activeFilter, setActiveFilter] = useState(filterParam)
 
-  // Sync state with URL search param
   useEffect(() => {
     setActiveFilter(filterParam)
   }, [filterParam])
@@ -181,43 +210,41 @@ export default function Portfolio() {
     (item) => activeFilter === 'all' || item.category === activeFilter
   )
 
-  const directInvestments = filteredItems.filter((item) => item.isDirect && !item.isOperating)
-  const operatingPlatforms = filteredItems.filter((item) => item.isOperating)
-  const fundInvestments = filteredItems.filter((item) => item.category === 'funds-secondary')
-
   return (
-    <div className="bg-white text-brand-navy-950 font-sans min-h-screen">
+    <div className="bg-brand-navy-950 text-white font-sans min-h-screen overflow-x-hidden">
       
       {/* Page Header (Navy Theme) */}
-      <section className="bg-brand-navy-950 text-white py-20 md:py-28 border-b border-brand-navy-800 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold-500/5 blur-[120px] rounded-full pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <section className="relative bg-brand-navy-950 py-24 border-b border-brand-navy-900/60 overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-80 h-80 bg-brand-gold-500/5 blur-[120px] rounded-full pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-left">
           <div className="max-w-3xl space-y-4">
-            <span className="text-xs font-semibold text-brand-gold-500 tracking-widest uppercase">
-              Capital Allocation
+            <span className="text-xs font-semibold text-brand-gold-500 tracking-widest uppercase font-heading">
+              Asset Register
             </span>
-            <h1 className="text-3xl md:text-5xl font-heading font-extrabold tracking-tight text-white m-0">
-              Our Portfolio
+            <h1 className="text-4xl md:text-6xl font-heading font-extrabold tracking-tight text-white leading-tight">
+              Our <span className="text-brand-gold-400">Portfolio</span> Platforms
             </h1>
-            <p className="text-sm md:text-base text-gray-300 font-light leading-relaxed max-w-2xl mt-4">
-              A structured asset register spanning direct operations, climate technologies, space systems, and diversified fund holdings.
+            <p className="text-base md:text-lg text-gray-300 font-light leading-relaxed max-w-2xl mt-4">
+              Explore our direct operating subsidiaries, sustainable infrastructure models, deep tech ventures, and secondary fund placements.
             </p>
           </div>
         </div>
       </section>
 
       {/* Filter Tabs Section */}
-      <section className="sticky top-20 z-30 bg-white border-b border-gray-100 py-6">
+      <section className="sticky top-20 z-30 bg-brand-navy-950 border-b border-brand-navy-900 py-6">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center space-x-2 overflow-x-auto scrollbar-none pb-2 -mb-2">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => handleFilterChange(cat.id)}
-                className={`px-4 py-2.5 text-xs font-heading font-medium tracking-wider uppercase border transition-all shrink-0 rounded-none cursor-pointer ${
+                className={`px-5 py-3 text-xs font-heading font-bold tracking-widest uppercase border transition-all shrink-0 rounded-none cursor-pointer ${
                   activeFilter === cat.id
-                    ? 'bg-brand-navy-950 border-brand-navy-950 text-brand-gold-500 font-semibold shadow-xs'
-                    : 'border-gray-200 hover:border-brand-gold-500/40 text-gray-600 hover:text-brand-navy-950'
+                    ? 'bg-brand-gold-500 border-brand-gold-500 text-brand-navy-950'
+                    : 'border-brand-navy-800 text-gray-400 hover:border-brand-gold-500/30 hover:text-white'
                 }`}
               >
                 {cat.name}
@@ -227,195 +254,119 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* 1. Direct Investments Section */}
-      {directInvestments.length > 0 && (
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="mb-16 space-y-2">
-              <span className="text-xs font-semibold text-brand-gold-700 tracking-widest uppercase">
-                Active Equity Allocations
-              </span>
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-brand-navy-950 tracking-tight">
-                Portfolio Companies:
-              </h2>
-              <div className="w-16 h-[2px] bg-brand-gold-500" />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-              <AnimatePresence mode="popLayout">
-                {directInvestments.map((item) => (
-                  <motion.div
-                    layout
-                    key={item.id}
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <Card
-                      title={item.name}
-                      description={item.description}
-                      sector={item.sector}
-                      geography={item.geography}
-                      investmentType={item.investmentType}
-                      categoryText={item.categoryText}
-                      
-                    />
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* 2. Operating Platforms Section */}
-      {operatingPlatforms.length > 0 && (
-        <section className="py-24 bg-brand-gold-50/20 border-y border-gray-100">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16 items-center">
-              <div className="lg:col-span-5 space-y-4">
-                <span className="text-xs font-semibold text-brand-gold-700 tracking-widest uppercase">
-                  Beyond Capital
-                </span>
-                <h2 className="text-2xl md:text-3xl font-heading font-bold text-brand-navy-950 tracking-tight">
-                  Building Operating Platforms
-                </h2>
-                <div className="w-16 h-[2px] bg-brand-gold-500" />
-                <p className="text-sm text-gray-600 font-light leading-relaxed pt-2">
-                  Lucky 4U Holdings is not only an investor. The group also builds and operates businesses directly in strategic sectors, taking complete ownership of operations, trade clearance, and logistics pipelines.
-                </p>
-              </div>
-              <div className="lg:col-span-7 bg-brand-navy-950 text-white p-8 border border-brand-navy-800 rounded-sm">
-                <h3 className="text-sm font-heading font-semibold tracking-wider text-brand-gold-500 uppercase mb-4">
-                  Operating Platform Advantages
-                </h3>
-                <ul className="space-y-3 text-xs text-gray-300 font-light">
-                  <li className="flex items-start">
-                    <span className="text-brand-gold-500 mr-2 font-bold">•</span>
-                    Direct infrastructure control to reduce operational friction and regional supply chain bottlenecks.
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-brand-gold-500 mr-2 font-bold">•</span>
-                    Integration with East African grower bases and Middle Eastern custom clearances.
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-brand-gold-500 mr-2 font-bold">•</span>
-                    Direct pricing power, end-to-end commodity tracking, and asset control.
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-              <AnimatePresence mode="popLayout">
-                {operatingPlatforms.map((item) => (
-                  <motion.div
-                    layout
-                    key={item.id}
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <Card
-                      title={item.name}
-                      description={item.description}
-                      sector={item.sector}
-                      geography={item.geography}
-                      investmentType={item.investmentType}
-                      categoryText={item.categoryText}
-                      
-                      highlight={true}
-                    />
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* 3. Funds & Secondary Investments Section */}
-      {(activeFilter === 'all' || activeFilter === 'funds-secondary') && fundInvestments.length > 0 && (
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            
-            {/* Premium Introductory Block */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20 border-b border-gray-100 pb-16">
-              <div className="lg:col-span-5 space-y-4">
-                <span className="text-xs font-semibold text-brand-gold-700 tracking-widest uppercase">
-                  Diversified Allocations
-                </span>
-                <h2 className="text-2xl md:text-3xl font-heading font-extrabold text-brand-navy-950 tracking-tight leading-tight">
-                  Fund Investments & Secondary Market Exposure
-                </h2>
-                <div className="w-16 h-[2px] bg-brand-gold-500" />
-                <p className="text-sm text-gray-500 font-light leading-relaxed pt-2">
-                  Lucky 4U Holdings participates in venture funds, AI-focused investment vehicles, and secondary market opportunities to gain exposure to high-growth private companies and emerging technology platforms.
-                </p>
-              </div>
-
-              {/* 2x2 Grid of Highlights */}
-              <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-2 text-brand-gold-700">
-                    <Layers className="w-4 h-4" />
-                    <h4 className="text-sm font-heading font-bold text-brand-navy-950">Strategic Diversification</h4>
-                  </div>
-                  <p className="text-xs text-gray-500 font-light leading-relaxed">
-                    Balancing direct asset exposure with professionally managed funds to capture broad growth across tech ecosystems.
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-2 text-brand-gold-700">
-                    <Cpu className="w-4 h-4" />
-                    <h4 className="text-sm font-heading font-bold text-brand-navy-950">Focused AI Exposure</h4>
-                  </div>
-                  <p className="text-xs text-gray-500 font-light leading-relaxed">
-                    Underwriting dedicated AI pools like the 1MX AI Fund to secure capital positions in next-generation intelligence.
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-2 text-brand-gold-700">
-                    <Shield className="w-4 h-4" />
-                    <h4 className="text-sm font-heading font-bold text-brand-navy-950">Venture Capital Access</h4>
-                  </div>
-                  <p className="text-xs text-gray-500 font-light leading-relaxed">
-                    Co-allocating into premium tier venture networks, capturing early-growth stage technology valuations.
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-2 text-brand-gold-700">
-                    <TrendingUp className="w-4 h-4" />
-                    <h4 className="text-sm font-heading font-bold text-brand-navy-950">Secondary Opportunities</h4>
-                  </div>
-                  <p className="text-xs text-gray-500 font-light leading-relaxed">
-                    Targeting pre-IPO secondary transactions in high-conviction companies to optimize liquidity timelines.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-              {fundInvestments.map((item) => (
-                <Card
+      {/* PORTFOLIO BENTO & GRID */}
+      <section className="py-24 bg-brand-navy-950">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          
+          <BentoGrid className="text-left">
+            {filteredItems.map((item) => {
+              const isFeatured = item.isFeatured && activeFilter === 'all'
+              
+              return (
+                <BentoItem
                   key={item.id}
-                  title={item.name}
-                  description={item.description}
-                  sector={item.sector}
-                  geography={item.geography}
-                  investmentType={item.investmentType}
-                  categoryText={item.categoryText}
-                  
-                />
-              ))}
+                  colSpan={isFeatured ? 'lg:col-span-2' : 'lg:col-span-1'}
+                  className="flex flex-col h-full"
+                >
+                  <GlassCard glow={isFeatured} className="h-full flex flex-col justify-between space-y-6">
+                    <div className="space-y-4">
+                      {/* Sector & Location */}
+                      <div className="flex items-center justify-between">
+                        <span className="text-[9px] uppercase tracking-widest font-bold text-brand-gold-400 font-heading">
+                          {item.sector}
+                        </span>
+                        <span className="inline-flex items-center text-[9px] text-gray-400 uppercase tracking-widest font-heading">
+                          <MapPin className="w-3.5 h-3.5 text-brand-gold-500 mr-1" />
+                          {item.geography}
+                        </span>
+                      </div>
+
+                      {/* Name */}
+                      <h3 className={`font-heading font-extrabold text-white leading-snug ${
+                        isFeatured ? 'text-2xl md:text-3xl' : 'text-xl'
+                      }`}>
+                        {item.name}
+                      </h3>
+
+                      {/* Investment Category label */}
+                      <div className="inline-block px-2.5 py-1 bg-brand-navy-950 border border-brand-navy-850 text-[9px] uppercase tracking-widest font-heading font-bold text-brand-gold-500">
+                        {item.investmentType}
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-xs text-gray-300 leading-relaxed font-light">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    {/* Embedded metrics widget */}
+                    {item.metrics && item.metrics.length > 0 && (
+                      <div className={`grid gap-4 pt-6 border-t border-brand-navy-850 ${
+                        isFeatured ? 'grid-cols-2 sm:grid-cols-3' : 'grid-cols-1'
+                      }`}>
+                        {item.metrics.map((metric, idx) => (
+                          <div key={idx} className="p-3 bg-brand-navy-950/70 border border-brand-navy-850">
+                            <span className="text-[8px] uppercase tracking-widest text-gray-500 font-semibold font-heading block">
+                              {metric.label}
+                            </span>
+                            <span className="text-sm font-heading font-extrabold text-brand-gold-400 block mt-0.5">
+                              {metric.value}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </GlassCard>
+                </BentoItem>
+              )
+            })}
+          </BentoGrid>
+
+          {/* Empty State */}
+          {filteredItems.length === 0 && (
+            <div className="text-center py-20 border border-dashed border-brand-navy-850 max-w-lg mx-auto mt-12 space-y-4">
+              <span className="text-sm text-gray-400 font-light">No active placements found in this segment.</span>
             </div>
+          )}
+
+        </div>
+      </section>
+
+      {/* PORTFOLIO METHODOLOGY CALLOUT */}
+      <section className="py-20 bg-brand-navy-900/20 border-t border-brand-navy-900/60 relative">
+        <div className="max-w-4xl mx-auto px-6 text-center space-y-6">
+          <h3 className="text-xl font-heading font-bold text-white tracking-tight">
+            How L4U Operates
+          </h3>
+          <p className="text-xs text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
+            Every operational subsidiary and asset allocation complies with our strict underwriting protocols. We co-develop distribution grids, structure compliance metrics, and provide active board governance.
+          </p>
+          <div className="pt-2">
+            <Link
+              to="/philosophy"
+              className="inline-flex items-center text-xs font-heading font-bold tracking-wider text-brand-gold-400 hover:text-brand-gold-300 uppercase"
+            >
+              Read Valuation Parameters
+              <ChevronRight className="ml-1 w-4 h-4" />
+            </Link>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
     </div>
+  )
+}
+
+function ChevronRight(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={2}
+      {...props}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
   )
 }

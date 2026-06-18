@@ -6,7 +6,7 @@ const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'About Us', path: '/about' },
   { name: 'Portfolio', path: '/portfolio' },
-  { name: 'Investment Philosophy', path: '/philosophy' },
+  { name: 'Philosophy', path: '/philosophy' },
   { name: 'Contact', path: '/contact' },
 ]
 
@@ -37,23 +37,23 @@ export default function Navbar() {
       <header
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           isScrolled
-            ? 'bg-brand-navy-950/95 border-b border-brand-navy-800 shadow-md backdrop-blur-md'
-            : 'bg-brand-navy-950 border-b border-brand-navy-900'
+            ? 'bg-brand-navy-950 border-b border-brand-navy-900 shadow-xl'
+            : 'bg-brand-navy-950 border-b border-brand-navy-950/20'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex h-20 items-center justify-between">
+          <div className="flex h-22 items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-3 group">
-              <div className="flex items-center justify-center w-10 h-10 border border-brand-gold-500/50 bg-brand-navy-900 rounded-sm transition-colors group-hover:border-brand-gold-500">
-                <span className="text-brand-gold-500 font-heading font-bold text-lg tracking-wider">L4U</span>
+            <Link to="/" className="flex items-center space-x-4 group">
+              <div className="flex items-center justify-center w-12 h-12 border border-brand-gold-500/40 bg-brand-navy-900 rounded-none transition-colors group-hover:border-brand-gold-500">
+                <span className="text-brand-gold-500 font-heading font-extrabold text-lg tracking-wider">L4U</span>
               </div>
 
-              <div className="flex flex-col">
-                <span className="text-white font-heading font-semibold text-sm md:text-base tracking-wider uppercase group-hover:text-brand-gold-100 transition-colors">
+              <div className="flex flex-col text-left">
+                <span className="text-white font-heading font-bold text-sm tracking-wider uppercase group-hover:text-brand-gold-200 transition-colors">
                   Lucky 4U Holdings
                 </span>
-                <span className="text-[10px] text-gray-400 tracking-widest uppercase">Investment Group</span>
+                <span className="text-[10px] text-gray-400 tracking-widest uppercase font-medium">Investment Group</span>
               </div>
             </Link>
 
@@ -64,7 +64,9 @@ export default function Navbar() {
                   key={link.path}
                   to={link.path}
                   className={({ isActive }) =>
-                    `font-sans text-sm font-medium tracking-wide uppercase transition-colors relative py-2 ${isActive ? 'text-brand-gold-500' : 'text-gray-300 hover:text-white'}`
+                    `font-heading text-xs font-bold tracking-widest uppercase transition-colors relative py-2 ${
+                      isActive ? 'text-brand-gold-500' : 'text-gray-300 hover:text-white'
+                    }`
                   }
                 >
                   {link.name}
@@ -76,7 +78,7 @@ export default function Navbar() {
             <div className="hidden md:flex items-center">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center px-5 py-2.5 border border-brand-gold-500 text-brand-gold-500 hover:bg-brand-gold-500 hover:text-brand-navy-950 font-sans text-xs font-semibold tracking-wider uppercase transition-all duration-300 rounded-sm"
+                className="inline-flex items-center justify-center px-5 py-2.5 border border-brand-gold-500 text-brand-gold-500 hover:bg-brand-gold-500 hover:text-brand-navy-950 font-heading text-[10px] font-bold tracking-widest uppercase transition-all duration-300 rounded-none"
               >
                 Partner With Us
                 <ArrowRight className="ml-2 w-3.5 h-3.5" />
@@ -85,7 +87,11 @@ export default function Navbar() {
 
             {/* Mobile Menu Button */}
             <div className="md:hidden">
-              <button onClick={() => setIsOpen((s) => !s)} aria-label={isOpen ? 'Close menu' : 'Open menu'} className="p-2 text-white">
+              <button
+                onClick={() => setIsOpen((s) => !s)}
+                aria-label={isOpen ? 'Close menu' : 'Open menu'}
+                className="p-2 text-white cursor-pointer"
+              >
                 {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
@@ -94,40 +100,46 @@ export default function Navbar() {
       </header>
 
       {/* Mobile Menu Overlay */}
-      <div id="mobile-menu" className={`md:hidden fixed inset-0 pt-20 bg-brand-navy-950 z-[999] transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div className="h-full overflow-y-auto px-6 py-8">
-          <div className="pb-8 mb-8 border-b border-brand-navy-800">
-            <div className="flex items-center space-x-4 mb-5">
-              <div className="flex items-center justify-center w-14 h-14 border border-brand-gold-500/50 bg-brand-navy-900 rounded-sm">
-                <span className="text-brand-gold-500 font-heading font-bold text-xl tracking-wider">L4U</span>
+      <div
+        id="mobile-menu"
+        className={`md:hidden fixed inset-0 pt-20 bg-brand-navy-950 z-[999] transition-transform duration-300 ease-in-out ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="h-full overflow-y-auto px-6 py-8 flex flex-col justify-between">
+          <div className="space-y-8">
+            <div className="pb-6 border-b border-brand-navy-900 flex items-center space-x-4">
+              <div className="flex items-center justify-center w-14 h-14 border border-brand-gold-500/40 bg-brand-navy-900 rounded-none">
+                <span className="text-brand-gold-500 font-heading font-extrabold text-xl tracking-wider">L4U</span>
               </div>
-              <div>
-                <h3 className="text-white font-heading text-lg font-semibold tracking-wide uppercase">Lucky 4U Holdings</h3>
-                <p className="text-xs text-gray-400 tracking-[0.25em] uppercase">Investment Group</p>
+              <div className="text-left">
+                <h3 className="text-white font-heading text-base font-bold tracking-wide uppercase">Lucky 4U Holdings</h3>
+                <p className="text-[10px] text-gray-400 tracking-[0.25em] uppercase font-medium">Investment Group</p>
               </div>
             </div>
 
-            <p className="text-sm text-gray-400 leading-relaxed mb-4">
-              Dubai-based private investment platform focused on technology, agriculture, global trade, venture opportunities, and long-term value creation.
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1 text-[10px] uppercase tracking-wider border border-brand-gold-500/30 text-brand-gold-400 rounded-sm">Dubai</span>
-              <span className="px-3 py-1 text-[10px] uppercase tracking-wider border border-brand-gold-500/30 text-brand-gold-400 rounded-sm">Global Markets</span>
-              <span className="px-3 py-1 text-[10px] uppercase tracking-wider border border-brand-gold-500/30 text-brand-gold-400 rounded-sm">AI</span>
-            </div>
+            <nav className="flex flex-col space-y-4 text-left">
+              {navLinks.map((link) => (
+                <NavLink
+                  key={link.path}
+                  to={link.path}
+                  className={({ isActive }) =>
+                    `text-base font-heading font-bold tracking-widest uppercase transition-colors py-2 border-b border-brand-navy-900/40 ${
+                      isActive ? 'text-brand-gold-500' : 'text-gray-300 hover:text-white'
+                    }`
+                  }
+                >
+                  {link.name}
+                </NavLink>
+              ))}
+            </nav>
           </div>
 
-          <nav className="flex flex-col space-y-6">
-            {navLinks.map((link) => (
-              <NavLink key={link.path} to={link.path} className={({ isActive }) => `text-lg font-heading font-medium tracking-wide uppercase transition-colors py-2 border-b border-brand-navy-800 ${isActive ? 'text-brand-gold-500' : 'text-gray-300 hover:text-white'}`}>
-                {link.name}
-              </NavLink>
-            ))}
-          </nav>
-
-          <div className="pt-8">
-            <Link to="/contact" className="w-full inline-flex items-center justify-center px-6 py-3 border border-brand-gold-500 text-brand-gold-500 hover:bg-brand-gold-500 hover:text-brand-navy-950 font-sans text-sm font-semibold tracking-wider uppercase transition-all rounded-sm">
+          <div className="pb-12">
+            <Link
+              to="/contact"
+              className="w-full inline-flex items-center justify-center px-6 py-4 border border-brand-gold-500 text-brand-gold-500 hover:bg-brand-gold-500 hover:text-brand-navy-950 font-heading text-xs font-bold tracking-widest uppercase transition-all rounded-none"
+            >
               Partner With Us
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>

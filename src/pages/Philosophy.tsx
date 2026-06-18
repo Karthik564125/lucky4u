@@ -1,183 +1,208 @@
-import { Leaf, Cpu, Award, Heart, Globe, ArrowRight } from 'lucide-react'
+import { Landmark, CheckCircle2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import Card from '../components/UI/Card'
+import GlassCard from '../components/UI/GlassCard'
 
+const frameworkStages = [
+  {
+    num: '01',
+    title: 'Solve Structural Friction',
+    description: 'We target market blockages—post-harvest wastage, distribution fragmentation, custom clearances, and regulatory delays—where physical operations unlock values.'
+  },
+  {
+    num: '02',
+    title: 'Partner with Operators',
+    description: 'We allocate into founders who understand local custom, coordinate field operations with discipline, and can utilize L4U’s existing distribution paths.'
+  },
+  {
+    num: '03',
+    title: 'Build Moats via Assets',
+    description: 'We invest directly in cold chain packaging yards, shipping terminals, and trade clearings. Physical asset control yields long-term compounding moats.'
+  },
+  {
+    num: '04',
+    title: 'GCC Market Gateways',
+    description: 'Every project must align with our Dubai clearing structures to streamline import compliance, wholesale distribution, and scaling options.'
+  },
+  {
+    num: '05',
+    title: 'Durable Socio-Economic Value',
+    description: 'Prioritizing projects that create employment, lift local supplier incomes, and establish sustainable ESG metrics.'
+  }
+]
 
-const pillars = [
+const underwritingParameters = [
   {
-    number: '01',
-    title: 'Essential Industries',
-    short: 'Food, agriculture, logistics, climate, and trade.',
-    description: 'We prioritize funding infrastructure and platforms that serve foundational human needs, focusing on securing supply chains, improving shelf-life, and optimizing physical commodity trade.',
-    icon: Leaf,
+    param: 'Strong Unit Economics',
+    standard: 'Pathway to cash profitability without relying on constant venture equity financing cycles.',
+    compliance: 'Required for all allocations'
   },
   {
-    number: '02',
-    title: 'Frontier Innovation',
-    short: 'Space exploration, AI, and advanced technologies.',
-    description: 'We deploy venture capital into paradigm-shifting domains including aerospace engineering, rocket payloads, enterprise-level automation, and predictive machine learning architectures.',
-    icon: Cpu,
+    param: 'Logistical Synergy',
+    standard: 'Ability to integrate into our existing logistics network (e.g., East African grower base -> Dubai clearance).',
+    compliance: 'Required for operating subsidiaries'
   },
   {
-    number: '03',
-    title: 'Scalable Consumer Brands',
-    short: 'Products with strong market adoption and growth potential.',
-    description: 'We back high-growth FMCG and consumer lifestyle brands that demonstrate clear product-market fit, capital efficiency, and regional distribution scalability.',
-    icon: Award,
+    param: 'Dubai Corridor Alignment',
+    standard: 'Opportunity must leverage the legal, trade, and financial frameworks of the UAE.',
+    compliance: 'Required for all platforms'
   },
   {
-    number: '04',
-    title: 'Sustainability & Impact',
-    short: 'Businesses creating measurable environmental and social value.',
-    description: 'We support carbon-positive initiatives, carbon-credit platforms, biochar projects, and circular economy startups that prove positive impact without compromising financial yields.',
-    icon: Heart,
-  },
-  {
-    number: '05',
-    title: 'Strategic Market Access',
-    short: 'Connecting Dubai, India, Africa, and global markets.',
-    description: 'We act as a gateway, leveraging our Dubai operations to assist portfolio founders in expanding logistics corridors, licensing, and trade channels into emerging high-yield networks.',
-    icon: Globe,
-  },
+    param: 'Community Welfare Uplift',
+    standard: 'Tangible socio-economic metrics (grower payouts, high-skill employment, ESG compliance).',
+    compliance: 'Core mandate check'
+  }
 ]
 
 export default function Philosophy() {
   return (
-    <div className="bg-white text-brand-navy-950 font-sans min-h-screen">
+    <div className="bg-brand-navy-950 text-white font-sans min-h-screen overflow-x-hidden">
       
       {/* Page Header (Navy Theme) */}
-      <section className="bg-brand-navy-950 text-white py-16 md:py-24 border-b border-brand-navy-800 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold-500/5 blur-[120px] rounded-full pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <section className="relative bg-brand-navy-950 py-24 border-b border-brand-navy-900/60 overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-80 h-80 bg-brand-gold-500/5 blur-[120px] rounded-full pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-left">
           <div className="max-w-3xl space-y-4">
-            <span className="text-xs font-semibold text-brand-gold-500 tracking-widest uppercase">
-              Core Mandate
+            <span className="text-xs font-semibold text-brand-gold-500 tracking-widest uppercase font-heading">
+              Our Core Mandate
             </span>
-            <h1 className="text-3xl md:text-5xl font-heading font-bold tracking-tight text-white m-0">
-              Our Investment Philosophy
+            <h1 className="text-4xl md:text-6xl font-heading font-extrabold tracking-tight text-white leading-tight">
+              A Builder's <span className="text-brand-gold-400">Philosophy</span> of Enduring Value
             </h1>
-            <p className="text-sm md:text-base text-gray-300 font-light leading-relaxed max-w-2xl mt-4">
-              We allocate capital where modern innovation intersects with foundational human necessity.
+            <p className="text-base md:text-lg text-gray-300 font-light leading-relaxed max-w-2xl mt-4">
+              We allocate capital exclusively where physical asset control, distribution networks, and trade paths intersect.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Philosophy Statement Section */}
-      <section className="py-20 bg-white border-b border-gray-100">
+      {/* Narrative Section */}
+      <section className="py-24 bg-white text-brand-navy-950 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center space-y-6">
-            <span className="text-xs font-semibold text-brand-gold-700 tracking-widest uppercase block">
-              Investment Core Message
+            <span className="text-xs font-semibold text-brand-gold-700 tracking-widest uppercase block font-heading">
+              The Underwriting Logic
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold text-brand-navy-950 tracking-tight leading-tight">
-              "We invest where innovation meets necessity."
+            <h2 className="text-3xl md:text-5xl font-heading font-extrabold text-brand-navy-950 tracking-tight leading-tight">
+              Real Assets. Real Communities. Active Control.
             </h2>
-            <div className="w-12 h-[2px] bg-brand-gold-500 mx-auto" />
-            <p className="text-base text-gray-600 font-light leading-relaxed max-w-2xl mx-auto pt-4">
-              Modern investment often prioritizes temporary hype over sustained utility. Lucky 4U Holdings actively focuses on sectors that form the backbone of the physical economy, coupled with breakthrough frontier technologies that will drive future optimization.
+            <div className="w-16 h-[2px] bg-brand-gold-500 mx-auto" />
+            <p className="text-base sm:text-lg text-gray-600 font-light leading-relaxed max-w-2xl mx-auto pt-4">
+              Lucky 4U Holdings does not speculate on valuations or chase paper yields. We believe that enduring wealth is generated by solving actual supply bottlenecks, setting up cold storages, organizing wholesale operations, and connecting markets through Dubai.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Pillars Grid */}
-      <section className="py-24 bg-brand-gold-50/20">
+      {/* STAGGERED FRAMEWORK CARDS */}
+      <section className="py-28 bg-brand-navy-950 border-b border-brand-navy-900/60 relative">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-semibold text-brand-gold-700 tracking-widest uppercase">
-              Operational Strategy
+          
+          <div className="max-w-3xl mb-20 space-y-3 text-left">
+            <span className="text-xs font-semibold text-brand-gold-500 tracking-widest uppercase font-heading">
+              Our Framework
             </span>
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-brand-navy-950 tracking-tight">
-              Five Pillars of Allocation
+            <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-white tracking-tight leading-tight">
+              The Five-Stage Value Construction Blueprint
             </h2>
-            <p className="text-xs text-gray-500 max-w-xl mx-auto font-light">
-              Our allocation framework is split across essential industries, breakthrough technology platforms, and market-gateway operations.
+            <div className="w-16 h-[2px] bg-brand-gold-500" />
+            <p className="text-sm text-gray-400 font-light max-w-xl leading-relaxed">
+              We apply these operational rules to target, structure, and scale every project in our emerging market corridors.
             </p>
-            <div className="w-12 h-[2px] bg-brand-gold-500 mx-auto mt-4" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {pillars.map((pillar, index) => {
-              const IconComp = pillar.icon
-              return (
-                <Card
-                  key={index}
-                  title={pillar.title}
-                  subtitle={pillar.short}
-                  description={pillar.description}
-                  icon={<IconComp className="w-5 h-5 text-brand-gold-600" />}
-                />
-              )
-            })}
+            {frameworkStages.map((stage, idx) => (
+              <GlassCard key={idx} glow={idx === 0 || idx === 2} className="flex flex-col justify-between text-left h-full">
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3 text-brand-gold-500">
+                    <span className="font-heading font-extrabold text-3xl">{stage.num}</span>
+                    <div className="h-[1px] flex-grow bg-brand-gold-500/10" />
+                  </div>
+                  
+                  <h3 className="text-lg font-heading font-bold text-white tracking-tight">
+                    {stage.title}
+                  </h3>
+                  <p className="text-xs text-gray-400 leading-relaxed font-light">
+                    {stage.description}
+                  </p>
+                </div>
+              </GlassCard>
+            ))}
           </div>
+
         </div>
       </section>
 
-      {/* Value Creation Section */}
-      <section className="py-20 bg-white">
+      {/* VALUE CHECKPOINTS / UNDERWRITING LEDGER */}
+      <section className="py-28 bg-white text-brand-navy-950 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            
-            <div className="space-y-6">
-              <span className="text-xs font-semibold text-brand-gold-700 tracking-widest uppercase">
-                Active Stewardship
-              </span>
-              <h3 className="text-2xl md:text-3xl font-heading font-bold text-brand-navy-950 tracking-tight">
-                Our Mandate: Value-Added Growth
-              </h3>
-              <p className="text-sm md:text-base text-gray-600 font-light leading-relaxed">
-                We believe that capital alone is not a differentiator. As a family-backed office, we deliver active strategic guidance, regulatory clearance support, and cross-border trade facilitation.
-              </p>
-              <p className="text-sm md:text-base text-gray-600 font-light leading-relaxed">
-                Whether helping an Indian FMCG brand enter Middle East distribution networks, or helping an agricultural processing company in Kenya set up carbon offsets, our team works hand-in-hand with our management teams to expand horizons.
-              </p>
-              <div className="pt-4">
-                <Link
-                  to="/portfolio"
-                  className="inline-flex items-center justify-center px-5 py-3 bg-brand-navy-950 hover:bg-brand-navy-900 text-white font-sans text-xs font-semibold tracking-wider uppercase transition-colors rounded-sm"
-                >
-                  Explore Portfolio Companies
-                  <ArrowRight className="ml-2 w-4 h-4 text-brand-gold-500" />
-                </Link>
-              </div>
-            </div>
+          
+          <div className="max-w-3xl mb-20 space-y-3 text-left">
+            <span className="text-xs font-semibold text-brand-gold-700 tracking-widest uppercase font-heading">
+              Underwriting Parameters
+            </span>
+            <h2 className="text-3xl md:text-5xl font-heading font-extrabold text-brand-navy-950 tracking-tight leading-tight">
+              The Value Checkpoint Ledger
+            </h2>
+            <div className="w-16 h-[2px] bg-brand-gold-500" />
+            <p className="text-sm text-gray-500 font-light max-w-xl leading-relaxed">
+              Every prospective asset allocation must satisfy our core criteria. Here is how we verify operational viability.
+            </p>
+          </div>
 
-            <div className="bg-brand-gold-50 border border-brand-gold-200/50 p-8 lg:p-12 space-y-6 rounded-sm">
-              <h4 className="text-lg font-heading font-bold text-brand-navy-950">
-                Key Parameters We Evaluate:
-              </h4>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <span className="flex items-center justify-center w-6 h-6 bg-brand-navy-950 text-brand-gold-500 text-xs font-bold rounded-sm mr-3 shrink-0 mt-0.5">
-                    1
-                  </span>
-                  <div>
-                    <h5 className="text-sm font-heading font-bold text-brand-navy-950">Strong Unit Economics</h5>
-                    <p className="text-xs text-gray-500 font-light mt-0.5">Clear route to profitability without depending solely on endless equity cycles.</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <span className="flex items-center justify-center w-6 h-6 bg-brand-navy-950 text-brand-gold-500 text-xs font-bold rounded-sm mr-3 shrink-0 mt-0.5">
-                    2
-                  </span>
-                  <div>
-                    <h5 className="text-sm font-heading font-bold text-brand-navy-950">Scalability of Infrastructure</h5>
-                    <p className="text-xs text-gray-500 font-light mt-0.5">Technology or physical logistics that scale without massive friction.</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <span className="flex items-center justify-center w-6 h-6 bg-brand-navy-950 text-brand-gold-500 text-xs font-bold rounded-sm mr-3 shrink-0 mt-0.5">
-                    3
-                  </span>
-                  <div>
-                    <h5 className="text-sm font-heading font-bold text-brand-navy-950">Strategic Alignment with Dubai Hub</h5>
-                    <p className="text-xs text-gray-500 font-light mt-0.5">Opportunities that leverage the UAE’s trade, distribution, and financial frameworks.</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
+          {/* Underwriting Parameters Table */}
+          <div className="overflow-x-auto border border-gray-200">
+            <table className="min-w-full divide-y divide-gray-200 text-left text-sm font-light">
+              <thead className="bg-gray-50 font-heading font-bold text-brand-navy-950 uppercase tracking-wider text-xs">
+                <tr>
+                  <th scope="col" className="px-6 py-4">Parameter Name</th>
+                  <th scope="col" className="px-6 py-4">Our Criteria Standard</th>
+                  <th scope="col" className="px-6 py-4">Compliance Check</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200 bg-white">
+                {underwritingParameters.map((param, index) => (
+                  <tr key={index} className="hover:bg-brand-gold-50/20 transition-colors">
+                    <td className="whitespace-nowrap px-6 py-5 font-heading font-bold text-brand-navy-950">
+                      {param.param}
+                    </td>
+                    <td className="px-6 py-5 text-gray-600 text-xs sm:text-sm leading-relaxed">
+                      {param.standard}
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-5">
+                      <span className="inline-flex items-center px-2.5 py-1 bg-brand-gold-50 text-[10px] uppercase font-bold text-brand-gold-700 font-heading border border-brand-gold-200/50">
+                        <CheckCircle2 className="w-3.5 h-3.5 mr-1 text-brand-gold-600" />
+                        {param.compliance}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
+        </div>
+      </section>
+
+      {/* QUICK INLINE CTA */}
+      <section className="bg-brand-navy-950 py-20 text-center border-t border-brand-navy-900/60 relative">
+        <div className="max-w-4xl mx-auto px-6 space-y-6">
+          <h3 className="text-2xl font-heading font-bold text-white tracking-tight">
+            Ready to review our active portfolios?
+          </h3>
+          <p className="text-xs text-gray-400 font-light max-w-xl mx-auto">
+            See these underwriting criteria applied across our agricultural logistics, tech units, and FZCO trading hubs.
+          </p>
+          <div className="pt-4">
+            <Link
+              to="/portfolio"
+              className="inline-flex items-center justify-center px-8 py-3.5 bg-brand-gold-500 hover:bg-brand-gold-600 text-brand-navy-950 font-semibold text-xs tracking-wider uppercase transition-colors rounded-none font-heading"
+            >
+              Explore Our Portfolio
+              <Landmark className="ml-2 w-4 h-4 text-brand-navy-950" />
+            </Link>
           </div>
         </div>
       </section>
